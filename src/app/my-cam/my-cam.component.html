@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-lg-6">
+    <ack-webcam [(ref)]="webcam" [options]="options" (onSuccess)="onSuccess($event)" (onError)="onError($event)"></ack-webcam>
+    <div class="btn-group">
+      <button type="button" (click)="captureBase64()" class="btn btn-success">Capture </button>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div *ngIf="captured" class="thumbnail">
+      <img [src]="base64" alt="thumbnail-capture">
+      <div class="caption">
+        <h3>Thumbail Preview</h3>
+        <p>You can either click Capture once more, or if satisfied with the snap, the base64 value of your image can be sent
+          across/ saved in your data base </p>
+        <p> <strong>  Base 64 of your image: </strong></p>
+        <input class="base64Input" [attr.value]="base64" readonly />
+        <div class="btn-group">
+          <button type="button" (click)="saveImageToDB()" class="btn btn-info">Save Image</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
